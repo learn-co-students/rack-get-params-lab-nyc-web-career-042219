@@ -19,10 +19,7 @@ class Application
     elsif req.path.match(/cart/)
       if @@cart.length > 0
         view_cart = []
-        @@cart.each do |cart_item|
-          view_cart << "#{cart_item}"
-        end
-        resp.write view_cart.join("\n")
+        resp.write @@cart.join("\n")
       else
         resp.write 'Your cart is empty'
       end
