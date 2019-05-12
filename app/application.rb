@@ -17,6 +17,32 @@ class Application
       resp.write "Path Not Found"
     end
 
+    #my code starts here:
+    if req.path.match(/cart/)
+      if @@cart.size == 0
+        resp.write "Your cart is empty"
+      else
+        @@cart.each do |item|
+          resp.write "#{item}\n"
+        end
+      end
+      #changes here
+    elsif req.path.match(/add/)
+      item = req.params["item"]
+
+      if @@items.include?(item)
+        @@cart << item
+        resp.write "added #{item}"
+      elsif @@items.include?(item) == false
+        resp.write "We don't have that item."
+      # else
+      #   resp.write "Path Not Found"
+      end
+
+    else
+      resp.write "Path Not Found"
+    end
+
     resp.finish
   end
 
