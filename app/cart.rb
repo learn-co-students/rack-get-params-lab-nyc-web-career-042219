@@ -1,0 +1,6 @@
+class Cart
+ 
+    @@cart = []
+
+
+end
